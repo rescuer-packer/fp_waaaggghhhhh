@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=80.0"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "rescuer-fp"
+version = "0.1.0"
+description = "Simple MILP Solver for rescuer tasks based on feasibility pump method"
+requires-python = ">=3.8"
+readme = "README.md"
+authors = [{name = "Vasily Stolbov a.k.a Kotomord", email = "vasily.v.stolbov@gmail.com"}]
+dependencies = ["rescuer-task", "pytest"]
