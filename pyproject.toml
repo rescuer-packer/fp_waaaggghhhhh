@@ -10,4 +10,4 @@ description = "Simple MILP Solver for rescuer tasks based on feasibility pump me
 requires-python = ">=3.8"
 readme = "README.md"
 authors = [{name = "Vasily Stolbov a.k.a Kotomord", email = "vasily.v.stolbov@gmail.com"}]
-dependencies = ["rescuer-task", "pytest"]
+dependencies = ["rescuer-task >= 0.1.1", "cachetools", "pytest"]
