@@ -8,13 +8,15 @@ class InnerFPConfig:
                  bad_jump_prob,
                  check_border,
                  fine_solver_name,
-                 fine_solver_params):
+                 fine_solver_params,
+                 search_possible_states):
         self.search_solver_name = search_solver_name
         self.search_solver_params = search_solver_params
         self.bad_jump_prob = bad_jump_prob
         self.check_border = check_border
         self.fine_solver_name = fine_solver_name
         self.fine_solver_params = fine_solver_params
+        self.search_possible_states = search_possible_states
 
 
 def ifp_from_dict(config: Dict[str, Any]):
@@ -30,5 +32,6 @@ def ifp_from_dict(config: Dict[str, Any]):
         config.get('bad_jump_prob', 0.003),
         config.get('check_border', 1e-5),
         config.get('fine_solver_name', 'SCIP'),
-        config.get('fine_solver_params', None)
+        config.get('fine_solver_params', None),
+        config.get('search_possible_states', {0, 1})
     )

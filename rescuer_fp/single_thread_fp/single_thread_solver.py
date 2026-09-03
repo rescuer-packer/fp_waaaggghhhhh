@@ -1,4 +1,5 @@
 from typing import Dict, Any
+from datetime import datetime, timedelta
 
 from rescuer_task.task import RescuerTask
 
@@ -8,18 +9,21 @@ from rescuer_fp.rounder.hash_storage import single_thread_storage
 from rescuer_fp.rounder.rounder import Rounder
 
 
-def solve(task: RescuerTask, config: Dict[str, Any], callback):
-    rounder = Rounder(task.rescuer_groups)
+def solve(task: RescuerTask, config: Dict[str, Any], callback, ttl_init=None):
+    hash_size = config.get("hash_size", 5)
+    rounder = Rounder(task.rescuer_groups, hash_size)
     inner_config = ifp_from_dict(config)
     task_jump = config.get('task_jump', 0.001)
-    ttl_init = config.get('ttl_init', None)
+
     ttl = None
     if ttl_init is not None:
-        pass  # время окончания
+        ttl = datetime.now() + timedelta(seconds=ttl_init)
     state = [0, None]
 
     def read_state_call():
-        # TODO - exit on time limit
+        if ttl is not None:
+            if datetime.now() > ttl:
+                state[0] = -1
         return state[0], state[1]
 
     def register_solution(conts, point):
