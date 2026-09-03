@@ -16,7 +16,7 @@ class FPResultStore:
         self.conts = conts
         self.rescuers = rescuers
         log_arr = []
-        if self.log_improve >= 0:
+        if self.log_improve == 0:
             log_arr.append(conts[0])
         if self.log_improve >= 1:
             log_arr.append(conts)
