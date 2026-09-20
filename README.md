@@ -1,2 +1,2 @@
 # fp_waaaggghhhhh
-Feasibility Pump implementation for rescuer tasks
+Feasibility Pump Proof-of-concept implementation for rescuer tasks
